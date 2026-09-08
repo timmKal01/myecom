@@ -27,6 +27,22 @@ export default {
                 surface: '#ffffff',
                 canvas: '#faf9f7',
                 line: '#e7e3dd',
+
+                // Separate palette for the internal admin dashboard only —
+                // a cooler, denser "SaaS console" look distinct from the
+                // warm storefront/vendor/customer brand above.
+                'admin-canvas': '#f5f6fa',
+                'admin-surface': '#ffffff',
+                'admin-border': '#e5e7eb',
+                'admin-ink': '#111827',
+                'admin-ink-muted': '#6b7280',
+                'admin-accent': '#3b5bff',
+                'admin-accent-dark': '#2743cc',
+                'admin-accent-soft': '#eef1ff',
+                'admin-positive': '#16a34a',
+                'admin-positive-soft': '#eafaf0',
+                'admin-negative': '#dc2626',
+                'admin-negative-soft': '#fdecec',
             },
         },
     },

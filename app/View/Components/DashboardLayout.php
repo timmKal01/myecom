@@ -23,13 +23,11 @@ class DashboardLayout extends Component
         $this->nav = $this->buildNav($role);
 
         $this->roleLabel = match ($role) {
-            'admin' => 'Administrator',
             'seller' => 'Vendor',
             default => 'Customer',
         };
 
         $this->homeRoute = match ($role) {
-            'admin' => 'admin',
             'seller' => 'vendor',
             default => 'dashboard',
         };
@@ -54,20 +52,6 @@ class DashboardLayout extends Component
     protected function buildNav(string $role): array
     {
         return match ($role) {
-            'admin' => [
-                ['key' => 'dashboard', 'label' => 'Dashboard', 'route' => 'admin', 'icon' => 'home'],
-                ['key' => 'category', 'label' => 'Categories', 'route' => 'category.manage', 'icon' => 'tag'],
-                ['key' => 'subcategory', 'label' => 'Subcategories', 'route' => 'subcategory.manage', 'icon' => 'tag'],
-                ['key' => 'attribute', 'label' => 'Attributes', 'route' => 'productattribute.manage', 'icon' => 'sliders'],
-                ['key' => 'discount', 'label' => 'Discounts', 'route' => 'discount.manage', 'icon' => 'percent'],
-                ['key' => 'products', 'label' => 'Products', 'route' => 'product.manage', 'icon' => 'box'],
-                ['key' => 'reviews', 'label' => 'Reviews', 'route' => 'product.review.manage', 'icon' => 'star'],
-                ['key' => 'orders', 'label' => 'Orders', 'route' => 'admin.order.history', 'icon' => 'receipt'],
-                ['key' => 'carts', 'label' => 'Cart Activity', 'route' => 'admin.cart.history', 'icon' => 'cart'],
-                ['key' => 'users', 'label' => 'Users', 'route' => 'admin.manage.user', 'icon' => 'users'],
-                ['key' => 'stores', 'label' => 'Stores', 'route' => 'admin.manage.store', 'icon' => 'building'],
-                ['key' => 'settings', 'label' => 'Settings', 'route' => 'admin.setting', 'icon' => 'cog'],
-            ],
             'seller' => [
                 ['key' => 'dashboard', 'label' => 'Dashboard', 'route' => 'vendor', 'icon' => 'home'],
                 ['key' => 'orders', 'label' => 'Order History', 'route' => 'vendor.order.history', 'icon' => 'receipt'],
