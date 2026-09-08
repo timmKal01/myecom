@@ -27,7 +27,12 @@ class EcommerceSeeder extends Seeder
     {
         $vendor = User::firstOrCreate(
             ['email' => 'vendor@myecom.test'],
-            ['name' => 'Amara Okafor', 'password' => bcrypt('password'), 'role' => 1]
+            ['name' => 'Amara Okafor', 'password' => bcrypt('password'), 'role' => 1, 'email_verified_at' => now()]
+        );
+
+        User::firstOrCreate(
+            ['email' => 'admin@myecom.test'],
+            ['name' => 'Site Admin', 'password' => bcrypt('password'), 'role' => 0, 'email_verified_at' => now()]
         );
 
         $store = Store::firstOrCreate(
