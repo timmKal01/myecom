@@ -3,13 +3,16 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
     public function index()
     {
-        return view('admin.product.manage');
+        $products = Product::with(['category', 'store', 'seller', 'images'])->latest()->paginate(15);
+
+        return view('admin.product.manage', compact('products'));
     }
 
     public function review_manage()

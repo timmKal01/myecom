@@ -1,47 +1,37 @@
-@extends('admin.layouts.layout')
-@section('admin_page_title')
-Edit SubCategory
-@endsection
-@section('admin_layout')
-<div class="row">
-    <div class="col-12">
-        <div class="card">
-            <div class="card-header">
-                <h5 class="card-title mb-0">Edit SubCategory</h5>
-            </div>
-            <div class="card-body">
-                @if ($errors->any())
+<x-dashboard-layout role="admin" active="subcategory" title="Edit Subcategory">
+    <div class="max-w-xl">
+        <div class="bg-surface border border-line rounded-xl p-6 sm:p-8 shadow-sm">
+            <h2 class="font-display text-xl font-semibold mb-6">Edit Subcategory</h2>
 
-                <div class="alert alert-danger d-flex align-items-center">
+            <form action="{{ route('update.subcat', $subcategory_info->id) }}" method="POST" class="space-y-5">
+                @csrf
+                @method('PUT')
+                <div>
+                    <label for="subcategory_name" class="block text-sm font-medium text-ink mb-1.5">Subcategory Name</label>
+                    <input type="text" name="subcategory_name" id="subcategory_name"
+                        value="{{ old('subcategory_name', $subcategory_info->subcategory_name) }}"
+                        class="w-full rounded-lg border border-line bg-surface px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-accent/40 focus:border-accent">
+                </div>
 
-                    <ul>
-
-                        @foreach ($errors->all() as $error)
-
-                        <li>{{ $error }}</li>
-
+                <div>
+                    <label for="category_id" class="block text-sm font-medium text-ink mb-1.5">Parent Category</label>
+                    <select name="category_id" id="category_id"
+                        class="w-full rounded-lg border border-line bg-surface px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-accent/40 focus:border-accent">
+                        @foreach (\App\Models\Category::orderBy('category_name')->get() as $category)
+                            <option value="{{ $category->id }}" @selected(old('category_id', $subcategory_info->category_id) == $category->id)>{{ $category->category_name }}</option>
                         @endforeach
-
-                    </ul>
-
+                    </select>
                 </div>
 
-                @endif
-                @if(session('success'))
-                <div class="alert alert-success">
-                    {{ session('success') }}
+                <div class="flex items-center gap-3 pt-2">
+                    <button type="submit" class="inline-flex items-center justify-center rounded-full bg-ink text-white text-sm font-medium px-6 py-2.5 hover:bg-accent transition-colors duration-200">
+                        Save Changes
+                    </button>
+                    <a href="{{ route('subcategory.manage') }}" class="text-sm font-medium text-ink-muted hover:text-accent transition-colors duration-200">
+                        Cancel
+                    </a>
                 </div>
-                @endif
-                <form action="{{ route('update.subcat', $subcategory_info->id) }}" method="POST">
-                    @csrf
-                    @method('PUT')
-                    <label for="subcategory_name" class="fw-bold mb-2">Provide a Name for Your SubCategory</label>
-                    <input type="text" class="form-control" name="subcategory_name" value="{{ $subcategory_info->subcategory_name }}">
-                    <button type="submit" class="btn btn-primary w-100 mt-2" onclick="return confirm('Are you sure you want to update this subcategory?')">Update Sub Category</button>
-                    <a href="{{ route('subcategory.manage') }}" class="btn btn-secondary w-100 mt-2" onclick="return confirm('Are you sure you want to go back to manage subcategories?')">Back to Manage SubCategories</a>
-                </form>
-            </div>
+            </form>
         </div>
     </div>
-</div>
-@endsection
+</x-dashboard-layout>

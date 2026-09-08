@@ -1,54 +1,43 @@
-@extends('admin.layouts.layout')
-@section('admin_page_title')
-Create SubCategory
-@endsection
-@section('admin_layout')
-<div class="row">
-    <div class="col-12">
-        <div class="card">
-            <div class="card-header">
-                <h5 class="card-title mb-0">Create SubCategory</h5>
-            </div>
-            <div class="card-body">
-                @if ($errors->any())
+<x-dashboard-layout role="admin" active="subcategory" title="Add Subcategory">
+    <div class="max-w-xl">
+        <div class="bg-surface border border-line rounded-xl p-6 sm:p-8 shadow-sm">
+            <h2 class="font-display text-xl font-semibold mb-6">New Subcategory</h2>
 
-                <div class="alert alert-danger d-flex align-items-center">
-
-                    <ul>
-
-                        @foreach ($errors->all() as $error)
-
-                        <li>{{ $error }}</li>
-
-                        @endforeach
-
-                    </ul>
-
-                </div>
-
-                @endif
-                @if(session('success'))
-                <div class="alert alert-success">
-                    {{ session('success') }}
-                </div>
-                @endif
-                <form action="{{ route('store.subcat') }}" method="POST">
+            @if ($categories->isEmpty())
+                <p class="text-sm text-ink-muted">
+                    You need at least one category before you can add a subcategory.
+                    <a href="{{ route('category.create') }}" class="text-accent font-medium hover:underline">Add a category</a>.
+                </p>
+            @else
+                <form action="{{ route('store.subcat') }}" method="POST" class="space-y-5">
                     @csrf
-                    <label for="subcategory_name" class="fw-bold mb-2">Provide a Name for Your SubCategory</label>
-                    <input type="text" class="form-control" name="subcategory_name" placeholder="Computer">
-                    
-                    <label for="category_id" class="fw-bold mb-2 my-2">Select a Category</label>
-                    <select name="category_id" class="form-select mb-2" id="category_id">
-                        <option value="" disabled selected>-- Select Category --</option>
-                        @foreach($categories as $category)
-                        <option value="{{ $category->id }}">{{ $category->category_name }}</option>
-                        @endforeach
-                    </select>
+                    <div>
+                        <label for="subcategory_name" class="block text-sm font-medium text-ink mb-1.5">Subcategory Name</label>
+                        <input type="text" name="subcategory_name" id="subcategory_name" value="{{ old('subcategory_name') }}"
+                            placeholder="Laptops"
+                            class="w-full rounded-lg border border-line bg-surface px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-accent/40 focus:border-accent">
+                    </div>
 
-                    <button type="submit" class="btn btn-primary w-100 mt-2">Add SubCategory</button>
+                    <div>
+                        <label for="category_id" class="block text-sm font-medium text-ink mb-1.5">Parent Category</label>
+                        <select name="category_id" id="category_id"
+                            class="w-full rounded-lg border border-line bg-surface px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-accent/40 focus:border-accent">
+                            @foreach ($categories as $category)
+                                <option value="{{ $category->id }}" @selected(old('category_id') == $category->id)>{{ $category->category_name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+
+                    <div class="flex items-center gap-3 pt-2">
+                        <button type="submit" class="inline-flex items-center justify-center rounded-full bg-ink text-white text-sm font-medium px-6 py-2.5 hover:bg-accent transition-colors duration-200">
+                            Add Subcategory
+                        </button>
+                        <a href="{{ route('subcategory.manage') }}" class="text-sm font-medium text-ink-muted hover:text-accent transition-colors duration-200">
+                            View all subcategories
+                        </a>
+                    </div>
                 </form>
-            </div>
+            @endif
         </div>
     </div>
-</div>
-@endsection
+</x-dashboard-layout>
