@@ -5,3 +5,38 @@
 [x-cloak] {
     display: none !important;
 }
+
+/* Dual-handle price range slider: two overlapping <input type="range">
+   elements share a track; only their thumbs are clickable. */
+.range-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    background: transparent;
+}
+.range-thumb::-webkit-slider-runnable-track {
+    background: transparent;
+}
+.range-thumb::-moz-range-track {
+    background: transparent;
+}
+.range-thumb::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    pointer-events: auto;
+    width: 16px;
+    height: 16px;
+    border-radius: 9999px;
+    background: #a16207;
+    border: 2px solid #ffffff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+}
+.range-thumb::-moz-range-thumb {
+    pointer-events: auto;
+    width: 16px;
+    height: 16px;
+    border-radius: 9999px;
+    background: #a16207;
+    border: 2px solid #ffffff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+}

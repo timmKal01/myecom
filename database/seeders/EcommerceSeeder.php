@@ -47,49 +47,49 @@ class EcommerceSeeder extends Seeder
         $catalog = [
             'Electronics' => [
                 'Audio' => [
-                    ['Aurora Wireless Over-Ear Headphones', 189.00, 149.00, 'Closed-back over-ear headphones tuned for a warm, detailed sound with 40 hours of battery life.'],
-                    ['Pulse True Wireless Earbuds', 79.00, null, 'Compact true-wireless earbuds with active noise cancellation and a pocketable charging case.'],
+                    ['Aurora Wireless Over-Ear Headphones', 189.00, 149.00, 'Closed-back over-ear headphones tuned for a warm, detailed sound with 40 hours of battery life.', 'Northline Audio'],
+                    ['Pulse True Wireless Earbuds', 79.00, null, 'Compact true-wireless earbuds with active noise cancellation and a pocketable charging case.', 'Northline Audio'],
                 ],
                 'Wearables' => [
-                    ['Meridian Smartwatch Series 4', 249.00, 209.00, 'Aluminum-cased smartwatch with continuous heart-rate tracking and a week-long battery.'],
-                    ['Orbit Fitness Tracker Band', 59.00, null, 'Lightweight fitness band that tracks steps, sleep, and heart rate with a seven-day charge.'],
+                    ['Meridian Smartwatch Series 4', 249.00, 209.00, 'Aluminum-cased smartwatch with continuous heart-rate tracking and a week-long battery.', 'Kestrel Tech'],
+                    ['Orbit Fitness Tracker Band', 59.00, null, 'Lightweight fitness band that tracks steps, sleep, and heart rate with a seven-day charge.', 'Kestrel Tech'],
                 ],
             ],
             'Fashion' => [
                 'Outerwear' => [
-                    ['Cascade Wool Overcoat', 329.00, null, 'A double-breasted wool overcoat cut for a clean, structured silhouette in colder months.'],
-                    ['Harbor Quilted Field Jacket', 189.00, 149.00, 'Quilted field jacket in water-resistant cotton, lined for the first cold snap.'],
+                    ['Cascade Wool Overcoat', 329.00, null, 'A double-breasted wool overcoat cut for a clean, structured silhouette in colder months.', 'Fieldstone'],
+                    ['Harbor Quilted Field Jacket', 189.00, 149.00, 'Quilted field jacket in water-resistant cotton, lined for the first cold snap.', 'Fieldstone'],
                 ],
                 'Footwear' => [
-                    ['Ridgeline Leather Chelsea Boots', 219.00, null, 'Full-grain leather Chelsea boots with a stacked heel and elastic side panels.'],
-                    ['Drift Canvas Low-Top Sneakers', 89.00, null, 'Minimal canvas low-tops with a cushioned insole, built for daily wear.'],
+                    ['Ridgeline Leather Chelsea Boots', 219.00, null, 'Full-grain leather Chelsea boots with a stacked heel and elastic side panels.', 'Harrow Supply Co.'],
+                    ['Drift Canvas Low-Top Sneakers', 89.00, null, 'Minimal canvas low-tops with a cushioned insole, built for daily wear.', 'Amble & Co.'],
                 ],
             ],
             'Home & Living' => [
                 'Lighting' => [
-                    ['Solace Ceramic Table Lamp', 99.00, null, 'Hand-finished ceramic base with a linen shade, casting a soft, warm glow.'],
-                    ['Halo Arc Floor Lamp', 179.00, 139.00, 'An arched floor lamp in brushed brass, positioned to light a reading chair just right.'],
+                    ['Solace Ceramic Table Lamp', 99.00, null, 'Hand-finished ceramic base with a linen shade, casting a soft, warm glow.', 'Amberlight'],
+                    ['Halo Arc Floor Lamp', 179.00, 139.00, 'An arched floor lamp in brushed brass, positioned to light a reading chair just right.', 'Amberlight'],
                 ],
                 'Decor' => [
-                    ['Linen Weave Throw Pillow Set', 59.00, null, 'A set of two linen-blend throw pillows in a subtle basket weave.'],
-                    ['Amber Glass Vase Trio', 69.00, null, 'Three hand-blown amber glass vases in graduated sizes.'],
+                    ['Linen Weave Throw Pillow Set', 59.00, null, 'A set of two linen-blend throw pillows in a subtle basket weave.', 'Linen & Loom'],
+                    ['Amber Glass Vase Trio', 69.00, null, 'Three hand-blown amber glass vases in graduated sizes.', 'Linen & Loom'],
                 ],
             ],
             'Beauty' => [
                 'Skincare' => [
-                    ['Renew Vitamin C Serum', 48.00, null, 'A brightening serum with 15% vitamin C and ferulic acid, for daily morning use.'],
-                    ['Velvet Clay Cleansing Balm', 34.00, 27.00, 'A balm-to-oil cleanser that lifts makeup and sunscreen without stripping the skin.'],
+                    ['Renew Vitamin C Serum', 48.00, null, 'A brightening serum with 15% vitamin C and ferulic acid, for daily morning use.', 'Verdant Botanics'],
+                    ['Velvet Clay Cleansing Balm', 34.00, 27.00, 'A balm-to-oil cleanser that lifts makeup and sunscreen without stripping the skin.', 'Verdant Botanics'],
                 ],
                 'Fragrance' => [
-                    ['Ember & Oak Eau de Parfum', 95.00, null, 'A warm, woody fragrance built around smoked oak, amber, and cedar.'],
+                    ['Ember & Oak Eau de Parfum', 95.00, null, 'A warm, woody fragrance built around smoked oak, amber, and cedar.', 'Meridian House'],
                 ],
             ],
             'Sports & Outdoors' => [
                 'Fitness' => [
-                    ['Summit Insulated Water Bottle', 32.00, null, 'Double-wall insulated bottle that keeps drinks cold for 24 hours.'],
+                    ['Summit Insulated Water Bottle', 32.00, null, 'Double-wall insulated bottle that keeps drinks cold for 24 hours.', 'Trailforge'],
                 ],
                 'Camping' => [
-                    ['Trailhead 30L Daypack', 129.00, 99.00, 'A 30L daypack with a padded hip belt and a dedicated hydration sleeve.'],
+                    ['Trailhead 30L Daypack', 129.00, 99.00, 'A 30L daypack with a padded hip belt and a dedicated hydration sleeve.', 'Trailforge'],
                 ],
             ],
         ];
@@ -103,7 +103,7 @@ class EcommerceSeeder extends Seeder
                     'category_id' => $category->id,
                 ]);
 
-                foreach ($products as [$name, $regularPrice, $discountedPrice, $description]) {
+                foreach ($products as [$name, $regularPrice, $discountedPrice, $description, $brand]) {
                     $slug = Str::slug($name);
 
                     if (Product::where('slug', $slug)->exists()) {
@@ -114,6 +114,7 @@ class EcommerceSeeder extends Seeder
                         'product_name' => $name,
                         'description' => $description,
                         'sku' => strtoupper(Str::random(3)) . '-' . random_int(10000, 99999),
+                        'brand' => $brand,
                         'user_id' => $vendor->id,
                         'category_id' => $category->id,
                         'subcategory_id' => $subcategory->id,

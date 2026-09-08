@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Storefront\CartController;
 use App\Http\Controllers\Storefront\CheckoutController;
+use App\Http\Controllers\Storefront\FavoriteController;
 use App\Http\Controllers\Storefront\HomeController;
 use App\Http\Controllers\Storefront\ProductController as StorefrontProductController;
 use App\Http\Controllers\Admin\AdminMainController;
@@ -37,6 +38,11 @@ Route::controller(CheckoutController::class)->prefix('checkout')->middleware(['a
         Route::get('/', 'index')->name('storefront.checkout.index');
         Route::post('/', 'store')->name('storefront.checkout.store');
         Route::get('/confirmation/{orderNumber}', 'confirmation')->name('storefront.checkout.confirmation');
+});
+
+Route::controller(FavoriteController::class)->prefix('favorites')->middleware(['auth', 'verified'])->group(function () {
+        Route::get('/', 'index')->name('storefront.favorites.index');
+        Route::post('/{product}/toggle', 'toggle')->name('storefront.favorites.toggle');
 });
 
 //Admin routes

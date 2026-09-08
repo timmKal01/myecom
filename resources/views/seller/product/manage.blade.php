@@ -18,6 +18,7 @@
                     <thead>
                         <tr class="border-b border-line text-left text-xs uppercase tracking-wide text-ink-muted">
                             <th class="px-6 py-3 font-medium">Product</th>
+                            <th class="px-6 py-3 font-medium">Brand</th>
                             <th class="px-6 py-3 font-medium">Category</th>
                             <th class="px-6 py-3 font-medium">Store</th>
                             <th class="px-6 py-3 font-medium">Price</th>
@@ -38,6 +39,7 @@
                                         <span class="font-medium">{{ $product->product_name }}</span>
                                     </div>
                                 </td>
+                                <td class="px-6 py-4 text-ink-muted">{{ $product->brand ?? '—' }}</td>
                                 <td class="px-6 py-4 text-ink-muted">{{ $product->category?->category_name }}</td>
                                 <td class="px-6 py-4 text-ink-muted">{{ $product->store?->store_name }}</td>
                                 <td class="px-6 py-4 tabular-nums">${{ number_format($product->final_price, 2) }}</td>

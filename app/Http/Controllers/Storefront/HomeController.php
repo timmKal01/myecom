@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Storefront;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Product;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -28,6 +29,10 @@ class HomeController extends Controller
             ->take(4)
             ->get();
 
-        return view('storefront.home', compact('categories', 'featuredProducts', 'saleProducts'));
+        $favoritedIds = Auth::check()
+            ? Auth::user()->favorites()->pluck('product_id')->all()
+            : [];
+
+        return view('storefront.home', compact('categories', 'featuredProducts', 'saleProducts', 'favoritedIds'));
     }
 }

@@ -39,6 +39,13 @@
                             class="w-full rounded-lg border border-line bg-surface px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-accent/40 focus:border-accent">
                     </div>
 
+                    <div>
+                        <label for="brand" class="block text-sm font-medium text-ink mb-1.5">Brand <span class="text-ink-muted font-normal">(optional)</span></label>
+                        <input type="text" name="brand" id="brand" value="{{ old('brand') }}"
+                            placeholder="Northline Audio"
+                            class="w-full rounded-lg border border-line bg-surface px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-accent/40 focus:border-accent">
+                    </div>
+
                     <livewire:category-subcategory />
 
                     <div>
