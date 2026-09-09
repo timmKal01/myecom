@@ -33,4 +33,9 @@ class CustomerMainController extends Controller
     {
         return view('customer.affiliate');
     }
+
+    public function setting()
+    {
+        return view('customer.setting');
+    }
 }

@@ -15,6 +15,8 @@ class DashboardLayout extends Component
 
     public string $homeRoute;
 
+    public string $settingsRoute;
+
     public function __construct(
         public string $role,
         public string $active = '',
@@ -30,6 +32,11 @@ class DashboardLayout extends Component
         $this->homeRoute = match ($role) {
             'seller' => 'vendor',
             default => 'dashboard',
+        };
+
+        $this->settingsRoute = match ($role) {
+            'seller' => 'vendor.setting',
+            default => 'customer.setting',
         };
 
         $this->initials = $this->makeInitials(Auth::user()?->name ?? '');

@@ -91,6 +91,18 @@
                 @endforeach
             </nav>
 
+            <div class="px-4 pb-2 shrink-0">
+                <a
+                    href="{{ route($settingsRoute) }}"
+                    class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors duration-150 {{ $active === 'settings' ? 'bg-accent-soft text-accent' : 'text-ink-muted hover:bg-canvas hover:text-ink' }}"
+                >
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="{{ $icons['cog'] }}" />
+                    </svg>
+                    Settings
+                </a>
+            </div>
+
             <div class="px-4 py-6 border-t border-line space-y-1">
                 <a href="{{ route('storefront.home') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-ink-muted hover:bg-canvas hover:text-ink transition-colors duration-150">
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">

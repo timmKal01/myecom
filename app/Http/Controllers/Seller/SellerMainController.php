@@ -39,4 +39,9 @@ class SellerMainController extends Controller
 
         return view('seller.orderhistory', compact('orderItems'));
     }
+
+    public function setting()
+    {
+        return view('seller.setting');
+    }
 }
