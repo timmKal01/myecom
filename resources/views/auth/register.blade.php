@@ -14,7 +14,7 @@
             <input
                 id="name" type="text" name="name" value="{{ old('name') }}"
                 required autofocus autocomplete="name" placeholder="Jane Doe"
-                class="w-full border border-line rounded-lg py-2.5 px-4 text-sm text-ink placeholder-ink-muted/50 focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent transition-colors duration-200"
+                class="w-full border border-line rounded-lg py-2.5 px-4 text-sm text-ink bg-surface placeholder-ink-muted/50 focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent transition-colors duration-200"
             >
             @error('name') <p class="text-xs text-red-600 mt-1.5">{{ $message }}</p> @enderror
         </div>
@@ -24,7 +24,7 @@
             <input
                 id="email" type="email" name="email" value="{{ old('email') }}"
                 required autocomplete="username" placeholder="abc@xyz.com"
-                class="w-full border border-line rounded-lg py-2.5 px-4 text-sm text-ink placeholder-ink-muted/50 focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent transition-colors duration-200"
+                class="w-full border border-line rounded-lg py-2.5 px-4 text-sm text-ink bg-surface placeholder-ink-muted/50 focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent transition-colors duration-200"
             >
             @error('email') <p class="text-xs text-red-600 mt-1.5">{{ $message }}</p> @enderror
         </div>
@@ -35,7 +35,7 @@
                 <input
                     id="password" :type="show ? 'text' : 'password'" name="password"
                     required autocomplete="new-password" placeholder="••••••••••"
-                    class="w-full border border-line rounded-lg py-2.5 px-4 pr-11 text-sm text-ink placeholder-ink-muted/50 focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent transition-colors duration-200"
+                    class="w-full border border-line rounded-lg py-2.5 px-4 pr-11 text-sm text-ink bg-surface placeholder-ink-muted/50 focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent transition-colors duration-200"
                 >
                 <button type="button" @click="show = !show" class="absolute right-3.5 top-1/2 -translate-y-1/2 text-ink-muted hover:text-ink transition-colors duration-200" aria-label="Toggle password visibility">
                     <svg x-show="!show" xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
@@ -55,7 +55,7 @@
             <input
                 id="password_confirmation" type="password" name="password_confirmation"
                 required autocomplete="new-password" placeholder="••••••••••"
-                class="w-full border border-line rounded-lg py-2.5 px-4 text-sm text-ink placeholder-ink-muted/50 focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent transition-colors duration-200"
+                class="w-full border border-line rounded-lg py-2.5 px-4 text-sm text-ink bg-surface placeholder-ink-muted/50 focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent transition-colors duration-200"
             >
             @error('password_confirmation') <p class="text-xs text-red-600 mt-1.5">{{ $message }}</p> @enderror
         </div>

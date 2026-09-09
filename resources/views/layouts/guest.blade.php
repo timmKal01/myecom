@@ -47,8 +47,8 @@
                             Considered goods, chosen well.
                         </p>
                         <p class="text-white/80 leading-relaxed mb-8">
-                            Electronics, fashion, and home goods chosen for how they hold up —
-                            sign in for order tracking, saved favourites, and a faster checkout.
+                            Electronics, fashion, and home goods chosen for how they hold up.
+                            Sign in for order tracking, saved favourites, and a faster checkout.
                         </p>
                         <a href="{{ route('storefront.products.index') }}" class="inline-flex items-center justify-center bg-white text-accent-dark px-6 py-2.5 rounded-full font-medium text-sm hover:bg-white/90 transition-colors duration-300">
                             Shop now

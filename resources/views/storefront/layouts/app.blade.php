@@ -6,7 +6,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>@yield('title', config('app.name'))</title>
-    <meta name="description" content="@yield('meta_description', 'Considered goods for everyday life — electronics, fashion, and home, chosen for how they hold up.')">
+    <meta name="description" content="@yield('meta_description', 'Considered goods for everyday life. Electronics, fashion, and home, chosen for how they hold up.')">
 
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
@@ -135,7 +135,7 @@
             <div class="lg:col-span-2">
                 <p class="font-display text-2xl text-white font-semibold tracking-wide mb-3">Northgate &amp; Co.</p>
                 <p class="text-sm text-white/60 max-w-sm leading-relaxed">
-                    Considered goods for everyday life — electronics, fashion, and home,
+                    Considered goods for everyday life. Electronics, fashion, and home,
                     chosen for how they hold up, not just how they photograph.
                 </p>
             </div>

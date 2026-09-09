@@ -43,7 +43,7 @@ class EcommerceSeeder extends Seeder
             [
                 'store_name' => 'Northgate & Co.',
                 'slug' => 'northgate-and-co',
-                'description' => 'Considered goods for everyday life — electronics, fashion, and home, chosen for how they hold up.',
+                'description' => 'Considered goods for everyday life. Electronics, fashion, and home, chosen for how they hold up.',
             ]
         );
 

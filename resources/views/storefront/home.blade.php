@@ -12,8 +12,8 @@
                 Made to last, <br class="hidden md:block">not just to look good.
             </h1>
             <p class="text-ink-muted text-lg max-w-md mb-8 leading-relaxed">
-                Electronics, fashion, and home goods chosen for how they hold up —
-                curated by a small team of people who use them daily.
+                Electronics, fashion, and home goods chosen for how they hold up.
+                Curated by a small team of people who use them daily.
             </p>
             <div class="flex flex-wrap gap-4">
                 <a href="{{ route('storefront.products.index') }}" class="inline-flex items-center justify-center bg-ink-solid text-white px-8 py-3.5 rounded-full font-medium hover:bg-accent transition-colors duration-300">
