@@ -14,14 +14,17 @@ use Illuminate\Support\Str;
 
 class EcommerceSeeder extends Seeder
 {
-    /** One warm tint per category, used only for the generated placeholder photos. */
-    private array $categoryTints = [
-        'Electronics' => ['#DDE3E8', '#B7C2CC', '#3F4A54'],
-        'Fashion' => ['#EFDFE0', '#D9B8BC', '#5A3A3E'],
-        'Home & Living' => ['#E1E7DA', '#BFCDB2', '#3E4A34'],
-        'Beauty' => ['#F3E3D9', '#E3BFAA', '#6B4430'],
-        'Sports & Outdoors' => ['#E7E2D3', '#C9BE9E', '#4B4530'],
-    ];
+    /**
+     * Real product photos live in database/seeders/assets/products, named
+     * "<product-slug>.jpg" — copied onto the public disk for each product
+     * exactly like a real vendor upload would be.
+     */
+    private string $photoDir;
+
+    public function __construct()
+    {
+        $this->photoDir = database_path('seeders/assets/products');
+    }
 
     public function run(): void
     {
@@ -44,52 +47,55 @@ class EcommerceSeeder extends Seeder
             ]
         );
 
+        // [name, regularPrice, discountedPrice, description, brand]
         $catalog = [
             'Electronics' => [
                 'Audio' => [
-                    ['Aurora Wireless Over-Ear Headphones', 189.00, 149.00, 'Closed-back over-ear headphones tuned for a warm, detailed sound with 40 hours of battery life.', 'Northline Audio'],
-                    ['Pulse True Wireless Earbuds', 79.00, null, 'Compact true-wireless earbuds with active noise cancellation and a pocketable charging case.', 'Northline Audio'],
+                    ['Wireless Over-Ear Headphones', 129.00, null, 'Cushioned over-ear headphones with a padded headband and deep bass response, built for daily listening.', null],
+                    ['True Wireless Earbuds', 59.00, null, 'Compact true-wireless earbuds with a pocketable charging case and touch controls.', null],
+                    ['Urbanista Wireless Headphones', 89.00, 69.00, 'Over-ear Bluetooth headphones in a metallic teal finish, tuned for all-day comfort.', 'Urbanista'],
+                    ['AXESS 2.1-Channel Bluetooth Home Theater Speaker System', 79.00, null, 'A 2.1-channel Bluetooth speaker system with a powered subwoofer, USB/SD playback, and a full-function remote.', 'AXESS'],
                 ],
-                'Wearables' => [
-                    ['Meridian Smartwatch Series 4', 249.00, 209.00, 'Aluminum-cased smartwatch with continuous heart-rate tracking and a week-long battery.', 'Kestrel Tech'],
-                    ['Orbit Fitness Tracker Band', 59.00, null, 'Lightweight fitness band that tracks steps, sleep, and heart rate with a seven-day charge.', 'Kestrel Tech'],
+                'TV & Home Theater' => [
+                    ['Sharp 40" QLED HD Smart TV', 329.00, 279.00, 'A 40-inch QLED HD smart TV with built-in streaming apps and vivid color reproduction.', 'Sharp'],
+                ],
+                'Gaming' => [
+                    ['Wireless Pro Game Controller', 74.00, null, 'A wireless game controller with textured grips, dual analog sticks, and a built-in speaker/mic jack.', 'PlayStation'],
+                ],
+                'Computers' => [
+                    ['Ultrabook Laptop 13"', 899.00, 799.00, 'A slim, convertible ultrabook with an aluminum shell, built for work on the move.', 'HP'],
+                    ['Wireless Rechargeable Mouse', 19.00, null, 'A slim, noiseless wireless mouse with an RGB glow strip and a rechargeable battery.', null],
+                    ['Laptop Charger — 65W Replacement Power Adapter', 24.00, null, 'A 65W replacement power adapter with a compatible barrel cable, sized for compact ultrabooks.', 'HP'],
                 ],
             ],
             'Fashion' => [
-                'Outerwear' => [
-                    ['Cascade Wool Overcoat', 329.00, null, 'A double-breasted wool overcoat cut for a clean, structured silhouette in colder months.', 'Fieldstone'],
-                    ['Harbor Quilted Field Jacket', 189.00, 149.00, 'Quilted field jacket in water-resistant cotton, lined for the first cold snap.', 'Fieldstone'],
-                ],
                 'Footwear' => [
-                    ['Ridgeline Leather Chelsea Boots', 219.00, null, 'Full-grain leather Chelsea boots with a stacked heel and elastic side panels.', 'Harrow Supply Co.'],
-                    ['Drift Canvas Low-Top Sneakers', 89.00, null, 'Minimal canvas low-tops with a cushioned insole, built for daily wear.', 'Amble & Co.'],
+                    ["Air Jordan 1 Mid 'Banned'", 175.00, null, "A mid-top basketball sneaker in the classic black, red, and white 'Banned' colorway.", 'Jordan'],
+                    ['Converse Chuck Taylor Low-Top Sneakers — Navy', 65.00, null, 'Classic canvas low-top sneakers with a rubber toe cap, in navy.', 'Converse'],
+                    ['Converse Chuck Taylor Low-Top Sneakers — Maroon', 65.00, null, 'Classic canvas low-top sneakers with a rubber toe cap, in maroon.', 'Converse'],
+                    ['Leather Combat Boots', 220.00, 189.00, 'Chunky-sole leather combat boots with lace-up styling and a durable rubber sole.', 'Dr. Martens'],
+                ],
+                'Tops' => [
+                    ['Black Cotton Button-Up Shirt', 39.00, null, 'A relaxed-fit cotton shirt with a chest pocket, in solid black.', null],
+                    ['Classic Denim Shirt — Dark Wash', 45.00, null, 'A long-sleeve denim shirt in a dark indigo wash with a chest pocket.', null],
+                    ['Classic Denim Shirt — Light Wash', 45.00, 36.00, 'A long-sleeve denim shirt in a light blue wash with dual chest pockets.', null],
+                    ['Oversized Checkered Flannel Shirt', 42.00, null, 'An oversized-fit flannel shirt in a black-and-white check, with a chest pocket.', null],
+                ],
+                'Accessories' => [
+                    ['Classic Baseball Cap', 22.00, null, 'A structured six-panel cotton cap with an adjustable strap.', null],
+                    ['Classic Leather Strap Watch', 89.00, null, 'An analog watch with a stainless case, Roman numeral dial, and a genuine leather strap.', null],
+                    ['Retro Round Optical Frames', 34.00, null, 'Lightweight round frames in matte black, sized for a comfortable all-day fit.', null],
                 ],
             ],
             'Home & Living' => [
-                'Lighting' => [
-                    ['Solace Ceramic Table Lamp', 99.00, null, 'Hand-finished ceramic base with a linen shade, casting a soft, warm glow.', 'Amberlight'],
-                    ['Halo Arc Floor Lamp', 179.00, 139.00, 'An arched floor lamp in brushed brass, positioned to light a reading chair just right.', 'Amberlight'],
-                ],
-                'Decor' => [
-                    ['Linen Weave Throw Pillow Set', 59.00, null, 'A set of two linen-blend throw pillows in a subtle basket weave.', 'Linen & Loom'],
-                    ['Amber Glass Vase Trio', 69.00, null, 'Three hand-blown amber glass vases in graduated sizes.', 'Linen & Loom'],
+                'Appliances' => [
+                    ['Retro-Style Top-Freezer Refrigerator', 749.00, 649.00, 'A top-freezer refrigerator with a brushed steel finish and a digital temperature display.', 'Samsung'],
                 ],
             ],
-            'Beauty' => [
-                'Skincare' => [
-                    ['Renew Vitamin C Serum', 48.00, null, 'A brightening serum with 15% vitamin C and ferulic acid, for daily morning use.', 'Verdant Botanics'],
-                    ['Velvet Clay Cleansing Balm', 34.00, 27.00, 'A balm-to-oil cleanser that lifts makeup and sunscreen without stripping the skin.', 'Verdant Botanics'],
-                ],
-                'Fragrance' => [
-                    ['Ember & Oak Eau de Parfum', 95.00, null, 'A warm, woody fragrance built around smoked oak, amber, and cedar.', 'Meridian House'],
-                ],
-            ],
-            'Sports & Outdoors' => [
-                'Fitness' => [
-                    ['Summit Insulated Water Bottle', 32.00, null, 'Double-wall insulated bottle that keeps drinks cold for 24 hours.', 'Trailforge'],
-                ],
-                'Camping' => [
-                    ['Trailhead 30L Daypack', 129.00, 99.00, 'A 30L daypack with a padded hip belt and a dedicated hydration sleeve.', 'Trailforge'],
+            'Pet Supplies' => [
+                'Food' => [
+                    ['NutriSource Adult Cat Food', 28.00, null, 'A grain-inclusive dry cat food formulated with real meat as the first ingredient.', 'NutriSource'],
+                    ['Purina Friskies Seafood Sensations Dry Cat Food, 22lb', 24.00, 19.00, 'A 22lb bag of dry cat food with salmon, tuna, and shrimp flavors.', 'Purina'],
                 ],
             ],
         ];
@@ -129,7 +135,7 @@ class EcommerceSeeder extends Seeder
                         'status' => 'Published',
                     ]);
 
-                    $path = $this->makePlaceholderImage($name, $categoryName, $this->categoryTints[$categoryName]);
+                    $path = $this->storeProductPhoto($slug);
 
                     ProductImage::create([
                         'product_id' => $product->id,
@@ -142,69 +148,16 @@ class EcommerceSeeder extends Seeder
     }
 
     /**
-     * Generates a simple, on-brand SVG "product photo" placeholder — no
-     * external image service or network dependency — and stores it on the
-     * public disk exactly like a real upload would be.
+     * Copies the real product photo bundled at database/seeders/assets/products/{slug}.jpg
+     * onto the public disk, exactly where a vendor upload would land.
      */
-    private function makePlaceholderImage(string $productName, string $categoryName, array $tint): string
+    private function storeProductPhoto(string $slug): string
     {
-        [$light, $mid, $ink] = $tint;
-        $lines = $this->wrapLines($productName, 16);
-        $lineHeight = 34;
-        $startY = 320 - (count($lines) - 1) * ($lineHeight / 2);
+        $source = $this->photoDir . '/' . $slug . '.jpg';
+        $target = 'product_images/' . $slug . '.jpg';
 
-        $tspans = '';
-        foreach ($lines as $i => $line) {
-            $y = $startY + $i * $lineHeight;
-            $tspans .= sprintf(
-                '<text x="320" y="%d" text-anchor="middle" font-family="Georgia, \'Times New Roman\', serif" font-size="27" font-weight="600" fill="%s">%s</text>',
-                $y,
-                $ink,
-                htmlspecialchars($line, ENT_QUOTES)
-            );
-        }
+        Storage::disk('public')->put($target, file_get_contents($source));
 
-        $svg = <<<SVG
-<svg viewBox="0 0 640 640" xmlns="http://www.w3.org/2000/svg">
-  <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="{$light}" />
-      <stop offset="100%" stop-color="{$mid}" />
-    </linearGradient>
-  </defs>
-  <rect width="640" height="640" fill="url(#bg)" />
-  <rect x="28" y="28" width="584" height="584" fill="none" stroke="{$ink}" stroke-opacity="0.35" stroke-width="1" />
-  <text x="320" y="250" text-anchor="middle" font-family="Georgia, serif" font-style="italic" font-size="15" letter-spacing="2" fill="{$ink}" opacity="0.7">{$categoryName}</text>
-  {$tspans}
-</svg>
-SVG;
-
-        $filename = 'product_images/' . Str::slug($productName) . '.svg';
-        Storage::disk('public')->put($filename, $svg);
-
-        return $filename;
-    }
-
-    /** Naive word-wrap for SVG text, which has no native wrapping. */
-    private function wrapLines(string $text, int $maxCharsPerLine): array
-    {
-        $words = explode(' ', $text);
-        $lines = [];
-        $current = '';
-
-        foreach ($words as $word) {
-            $candidate = trim($current . ' ' . $word);
-            if (strlen($candidate) > $maxCharsPerLine && $current !== '') {
-                $lines[] = $current;
-                $current = $word;
-            } else {
-                $current = $candidate;
-            }
-        }
-        if ($current !== '') {
-            $lines[] = $current;
-        }
-
-        return $lines;
+        return $target;
     }
 }
