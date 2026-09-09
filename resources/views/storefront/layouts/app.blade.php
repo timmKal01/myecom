@@ -9,8 +9,9 @@
     <meta name="description" content="@yield('meta_description', 'Considered goods for everyday life — electronics, fashion, and home, chosen for how they hold up.')">
 
     <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&family=cormorant-garamond:500,600,700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
+    @include('partials.theme-init')
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="font-sans antialiased bg-canvas text-ink" x-data="{ mobileMenuOpen: false }">
@@ -46,6 +47,8 @@
                 </nav>
 
                 <div class="flex items-center gap-4 shrink-0">
+                    @include('partials.theme-toggle', ['class' => 'text-ink hover:text-accent'])
+
                     <form action="{{ route('storefront.products.index') }}" method="GET" class="hidden md:flex items-center relative">
                         <input
                             type="search"

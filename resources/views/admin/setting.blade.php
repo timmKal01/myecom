@@ -19,6 +19,10 @@
         </div>
 
         <div class="bg-admin-surface border border-admin-border rounded-2xl p-6 sm:p-8">
+            @include('partials.appearance-settings')
+        </div>
+
+        <div class="bg-admin-surface border border-admin-border rounded-2xl p-6 sm:p-8">
             <h2 class="text-lg font-semibold mb-2">Account Settings</h2>
             <p class="text-sm text-admin-ink-muted mb-4">Update your name, email, or password from your account profile.</p>
             <a href="{{ route('profile.edit') }}" class="inline-flex items-center justify-center rounded-full bg-admin-accent text-white text-sm font-medium px-6 py-2.5 hover:bg-admin-accent-dark transition-colors duration-200">

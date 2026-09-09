@@ -26,21 +26,22 @@
     <title>{{ $title }} — {{ config('app.name') }}</title>
 
     <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&family=cormorant-garamond:500,600,700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
+    @include('partials.theme-init')
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @livewireStyles
 </head>
 <body class="font-sans antialiased bg-canvas text-ink" x-data="{ sidebarOpen: false }">
 
-    <div class="lg:hidden sticky top-0 z-40 flex items-center justify-between h-16 px-4 bg-ink text-white">
-        <button class="p-2 -ml-2" @click="sidebarOpen = true" aria-label="Open menu">
+    <div class="lg:hidden sticky top-0 z-40 flex items-center justify-between h-16 px-4 bg-surface border-b border-line">
+        <button class="p-2 -ml-2 text-ink" @click="sidebarOpen = true" aria-label="Open menu">
             <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5M3.75 17.25h16.5" />
             </svg>
         </button>
-        <span class="font-display text-xl font-semibold tracking-wide">{{ $title }}</span>
-        <div class="w-8 h-8 rounded-full bg-accent flex items-center justify-center text-xs font-semibold">
+        <span class="font-semibold tracking-wide">{{ $title }}</span>
+        <div class="w-8 h-8 rounded-full bg-accent text-white flex items-center justify-center text-xs font-semibold">
             {{ $initials }}
         </div>
     </div>
@@ -60,14 +61,15 @@
         ></div>
 
         <aside
-            class="fixed lg:sticky top-0 left-0 z-50 lg:z-0 h-screen w-72 bg-ink text-white flex flex-col shrink-0 transition-transform duration-200 lg:translate-x-0"
+            class="fixed lg:sticky top-0 left-0 z-50 lg:z-0 h-screen w-72 bg-surface border-r border-line flex flex-col shrink-0 transition-transform duration-200 lg:translate-x-0"
             :class="sidebarOpen ? 'translate-x-0' : '-translate-x-full'"
         >
-            <div class="flex items-center justify-between px-6 h-20 border-b border-white/10">
-                <a href="{{ route('storefront.home') }}" class="font-display text-2xl font-semibold tracking-wide">
-                    Northgate <span class="text-accent">&amp;</span> Co.
+            <div class="flex items-center justify-between px-6 h-20 border-b border-line">
+                <a href="{{ route('storefront.home') }}" class="flex items-center gap-2.5 min-w-0">
+                    <span class="w-8 h-8 rounded-lg bg-accent text-white flex items-center justify-center text-sm font-bold shrink-0">N</span>
+                    <span class="font-semibold tracking-tight truncate">Northgate & Co.</span>
                 </a>
-                <button class="lg:hidden p-1 text-white/70" @click="sidebarOpen = false" aria-label="Close menu">
+                <button class="lg:hidden p-1 text-ink-muted" @click="sidebarOpen = false" aria-label="Close menu">
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                     </svg>
@@ -79,7 +81,7 @@
                     @php $isActive = $active === $item['key']; @endphp
                     <a
                         href="{{ route($item['route']) }}"
-                        class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors duration-150 {{ $isActive ? 'bg-accent text-white' : 'text-white/70 hover:bg-white/10 hover:text-white' }}"
+                        class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors duration-150 {{ $isActive ? 'bg-accent-soft text-accent' : 'text-ink-muted hover:bg-canvas hover:text-ink' }}"
                     >
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
                             <path stroke-linecap="round" stroke-linejoin="round" d="{{ $icons[$item['icon']] ?? $icons['home'] }}" />
@@ -89,8 +91,8 @@
                 @endforeach
             </nav>
 
-            <div class="px-4 py-6 border-t border-white/10 space-y-1">
-                <a href="{{ route('storefront.home') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-white/70 hover:bg-white/10 hover:text-white transition-colors duration-150">
+            <div class="px-4 py-6 border-t border-line space-y-1">
+                <a href="{{ route('storefront.home') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-ink-muted hover:bg-canvas hover:text-ink transition-colors duration-150">
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
                     </svg>
@@ -98,7 +100,7 @@
                 </a>
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
-                    <button type="submit" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-white/70 hover:bg-white/10 hover:text-white transition-colors duration-150">
+                    <button type="submit" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-ink-muted hover:bg-canvas hover:text-ink transition-colors duration-150">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75" />
                         </svg>
@@ -110,14 +112,18 @@
 
         <div class="flex-1 min-w-0">
             <div class="hidden lg:flex items-center justify-between h-20 px-8 border-b border-line bg-surface sticky top-0 z-30">
-                <h1 class="font-display text-2xl font-semibold tracking-wide">{{ $title }}</h1>
-                <div class="flex items-center gap-3">
-                    <div class="text-right">
-                        <p class="text-sm font-medium leading-tight">{{ Auth::user()?->name }}</p>
-                        <p class="text-xs text-ink-muted leading-tight">{{ $roleLabel }}</p>
-                    </div>
-                    <div class="w-10 h-10 rounded-full bg-accent text-white flex items-center justify-center text-sm font-semibold">
-                        {{ $initials }}
+                <h1 class="text-2xl font-semibold tracking-tight">{{ $title }}</h1>
+                <div class="flex items-center gap-4">
+                    @include('partials.theme-toggle')
+
+                    <div class="flex items-center gap-3">
+                        <div class="text-right">
+                            <p class="text-sm font-medium leading-tight">{{ Auth::user()?->name }}</p>
+                            <p class="text-xs text-ink-muted leading-tight">{{ $roleLabel }}</p>
+                        </div>
+                        <div class="w-10 h-10 rounded-full bg-accent text-white flex items-center justify-center text-sm font-semibold">
+                            {{ $initials }}
+                        </div>
                     </div>
                 </div>
             </div>

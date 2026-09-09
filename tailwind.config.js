@@ -3,6 +3,8 @@ import forms from '@tailwindcss/forms';
 
 /** @type {import('tailwindcss').Config} */
 export default {
+    darkMode: 'class',
+
     content: [
         './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
         './storage/framework/views/*.php',
@@ -13,36 +15,46 @@ export default {
         extend: {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
-                display: ['"Cormorant Garamond"', ...defaultTheme.fontFamily.serif],
+                // Kept as its own token (rather than inlining Figtree everywhere)
+                // so any page can still ask for a "display" weight distinctly
+                // from body text, even though both resolve to the same
+                // typeface now that the whole site shares one look.
+                display: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
             colors: {
-                // A warm, premium neutral + gold accent — kept as named
-                // aliases (rather than raw stone/amber classes everywhere)
-                // so the storefront's palette is easy to retune from one
-                // place later.
-                ink: '#1c1917',
-                'ink-muted': '#57534e',
-                accent: '#a16207',
-                'accent-dark': '#854d0e',
-                surface: '#ffffff',
-                canvas: '#faf9f7',
-                line: '#e7e3dd',
+                // One shared palette for the entire site (storefront, auth,
+                // vendor, customer, admin). Every value is a CSS custom
+                // property (see resources/css/app.css) so a single `.dark`
+                // class swap re-themes every page that uses these tokens —
+                // no per-page dark: variants required.
+                canvas: 'rgb(var(--color-canvas) / <alpha-value>)',
+                surface: 'rgb(var(--color-surface) / <alpha-value>)',
+                line: 'rgb(var(--color-line) / <alpha-value>)',
+                ink: 'rgb(var(--color-ink) / <alpha-value>)',
+                'ink-muted': 'rgb(var(--color-ink-muted) / <alpha-value>)',
+                accent: 'rgb(var(--color-accent) / <alpha-value>)',
+                'accent-dark': 'rgb(var(--color-accent-dark) / <alpha-value>)',
+                'accent-soft': 'rgb(var(--color-accent-soft) / <alpha-value>)',
+                positive: 'rgb(var(--color-positive) / <alpha-value>)',
+                'positive-soft': 'rgb(var(--color-positive-soft) / <alpha-value>)',
+                negative: 'rgb(var(--color-negative) / <alpha-value>)',
+                'negative-soft': 'rgb(var(--color-negative-soft) / <alpha-value>)',
 
-                // Separate palette for the internal admin dashboard only —
-                // a cooler, denser "SaaS console" look distinct from the
-                // warm storefront/vendor/customer brand above.
-                'admin-canvas': '#f5f6fa',
-                'admin-surface': '#ffffff',
-                'admin-border': '#e5e7eb',
-                'admin-ink': '#111827',
-                'admin-ink-muted': '#6b7280',
-                'admin-accent': '#3b5bff',
-                'admin-accent-dark': '#2743cc',
-                'admin-accent-soft': '#eef1ff',
-                'admin-positive': '#16a34a',
-                'admin-positive-soft': '#eafaf0',
-                'admin-negative': '#dc2626',
-                'admin-negative-soft': '#fdecec',
+                // Aliases so the ~20 admin views (already written against
+                // "admin-*" class names) automatically theme and go dark
+                // along with everything else, with zero file changes.
+                'admin-canvas': 'rgb(var(--color-canvas) / <alpha-value>)',
+                'admin-surface': 'rgb(var(--color-surface) / <alpha-value>)',
+                'admin-border': 'rgb(var(--color-line) / <alpha-value>)',
+                'admin-ink': 'rgb(var(--color-ink) / <alpha-value>)',
+                'admin-ink-muted': 'rgb(var(--color-ink-muted) / <alpha-value>)',
+                'admin-accent': 'rgb(var(--color-accent) / <alpha-value>)',
+                'admin-accent-dark': 'rgb(var(--color-accent-dark) / <alpha-value>)',
+                'admin-accent-soft': 'rgb(var(--color-accent-soft) / <alpha-value>)',
+                'admin-positive': 'rgb(var(--color-positive) / <alpha-value>)',
+                'admin-positive-soft': 'rgb(var(--color-positive-soft) / <alpha-value>)',
+                'admin-negative': 'rgb(var(--color-negative) / <alpha-value>)',
+                'admin-negative-soft': 'rgb(var(--color-negative-soft) / <alpha-value>)',
             },
         },
     },

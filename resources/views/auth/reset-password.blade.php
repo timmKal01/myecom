@@ -1,6 +1,6 @@
 <x-guest-layout>
-    <h1 class="font-display text-4xl font-bold mb-2 bg-gradient-to-r from-[#14b8a6] to-[#2563eb] bg-clip-text text-transparent">Reset Password</h1>
-    <p class="text-sm text-[#5b6866] mb-8">Choose a new password for your account.</p>
+    <h1 class="font-display text-4xl font-bold mb-2 bg-gradient-to-r from-accent to-accent-dark bg-clip-text text-transparent">Reset Password</h1>
+    <p class="text-sm text-ink-muted mb-8">Choose a new password for your account.</p>
 
     <form method="POST" action="{{ route('password.store') }}" class="space-y-4">
         @csrf

@@ -3,6 +3,10 @@
 
     <div class="space-y-6">
         <div class="bg-surface border border-line rounded-xl p-6 sm:p-8 shadow-sm">
+            @include('partials.appearance-settings')
+        </div>
+
+        <div class="bg-surface border border-line rounded-xl p-6 sm:p-8 shadow-sm">
             @include('profile.partials.update-profile-information-form')
         </div>
 

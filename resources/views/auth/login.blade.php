@@ -1,6 +1,6 @@
 <x-guest-layout>
     <div class="auth-enter auth-enter-2">
-        <h1 class="font-display text-4xl font-bold mb-8 bg-gradient-to-r from-[#14b8a6] to-[#2563eb] bg-clip-text text-transparent">
+        <h1 class="font-display text-4xl font-bold mb-8 bg-gradient-to-r from-accent to-accent-dark bg-clip-text text-transparent">
             Log in
         </h1>
     </div>
@@ -11,24 +11,24 @@
         @csrf
 
         <div>
-            <label for="email" class="block text-sm font-semibold text-[#1a2332] mb-1.5">Email address</label>
+            <label for="email" class="block text-sm font-semibold text-ink mb-1.5">Email address</label>
             <input
                 id="email" type="email" name="email" value="{{ old('email') }}"
                 required autofocus autocomplete="username" placeholder="abc@xyz.com"
-                class="w-full border border-[#dbe4e2] rounded-lg py-2.5 px-4 text-sm text-[#1a2332] placeholder-[#9aa5a3] focus:outline-none focus:ring-2 focus:ring-[#14b8a6]/30 focus:border-[#14b8a6] transition-colors duration-200"
+                class="w-full border border-line rounded-lg py-2.5 px-4 text-sm text-ink placeholder-ink-muted/50 focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent transition-colors duration-200"
             >
             @error('email') <p class="text-xs text-red-600 mt-1.5">{{ $message }}</p> @enderror
         </div>
 
         <div>
-            <label for="password" class="block text-sm font-semibold text-[#1a2332] mb-1.5">Password</label>
+            <label for="password" class="block text-sm font-semibold text-ink mb-1.5">Password</label>
             <div class="relative" x-data="{ show: false }">
                 <input
                     id="password" :type="show ? 'text' : 'password'" name="password"
                     required autocomplete="current-password" placeholder="••••••••••"
-                    class="w-full border border-[#dbe4e2] rounded-lg py-2.5 px-4 pr-11 text-sm text-[#1a2332] placeholder-[#9aa5a3] focus:outline-none focus:ring-2 focus:ring-[#14b8a6]/30 focus:border-[#14b8a6] transition-colors duration-200"
+                    class="w-full border border-line rounded-lg py-2.5 px-4 pr-11 text-sm text-ink placeholder-ink-muted/50 focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent transition-colors duration-200"
                 >
-                <button type="button" @click="show = !show" class="absolute right-3.5 top-1/2 -translate-y-1/2 text-[#9aa5a3] hover:text-[#1a2332] transition-colors duration-200" aria-label="Toggle password visibility">
+                <button type="button" @click="show = !show" class="absolute right-3.5 top-1/2 -translate-y-1/2 text-ink-muted hover:text-ink transition-colors duration-200" aria-label="Toggle password visibility">
                     <svg x-show="!show" xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z"/>
                         <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
@@ -43,11 +43,11 @@
 
         <div class="flex items-center justify-between text-sm">
             <label for="remember_me" class="flex items-center gap-2 cursor-pointer select-none">
-                <input id="remember_me" type="checkbox" name="remember" class="rounded border-[#dbe4e2] text-[#14b8a6] focus:ring-[#14b8a6]/30">
-                <span class="font-medium text-[#1a2332]">Remember me</span>
+                <input id="remember_me" type="checkbox" name="remember" class="rounded border-line text-accent focus:ring-accent/30">
+                <span class="font-medium text-ink">Remember me</span>
             </label>
             @if (Route::has('password.request'))
-                <a href="{{ route('password.request') }}" class="font-medium text-[#1a2332] hover:text-[#0f766e] transition-colors duration-200">
+                <a href="{{ route('password.request') }}" class="font-medium text-ink hover:text-accent-dark transition-colors duration-200">
                     Forgot Password ?
                 </a>
             @endif
@@ -55,19 +55,19 @@
 
         <button
             type="submit"
-            class="w-full rounded-full bg-gradient-to-r from-[#14b8a6] to-[#2563eb] text-white font-semibold py-3 hover:opacity-90 hover:-translate-y-0.5 transition-all duration-200 shadow-lg shadow-[#14b8a6]/20"
+            class="w-full rounded-full bg-gradient-to-r from-accent to-accent-dark text-white font-semibold py-3 hover:opacity-90 hover:-translate-y-0.5 transition-all duration-200 shadow-lg shadow-accent/20"
         >
             Log in
         </button>
     </form>
 
     <div class="auth-enter auth-enter-4">
-        <p class="text-center text-sm font-medium text-[#1a2332] mt-8 mb-4">Or connect with</p>
+        <p class="text-center text-sm font-medium text-ink mt-8 mb-4">Or connect with</p>
         @include('auth.partials.social-buttons')
 
-        <p class="text-sm text-center text-[#5b6866] mt-8">
+        <p class="text-sm text-center text-ink-muted mt-8">
             Don't have an account ?
-            <a href="{{ route('register') }}" class="font-semibold text-[#1a2332] hover:text-[#0f766e] transition-colors duration-200">
+            <a href="{{ route('register') }}" class="font-semibold text-ink hover:text-accent-dark transition-colors duration-200">
                 Sign up
             </a>
         </p>

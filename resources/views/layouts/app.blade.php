@@ -15,8 +15,9 @@
         <title>{{ $header ?? 'Account' }} — {{ config('app.name', 'Laravel') }}</title>
 
         <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&family=cormorant-garamond:500,600,700&display=swap" rel="stylesheet" />
+        <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
+        @include('partials.theme-init')
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="font-sans text-ink antialiased bg-canvas">
@@ -26,6 +27,8 @@
                     Northgate <span class="text-accent">&amp;</span> Co.
                 </a>
                 <div class="flex items-center gap-4 text-sm">
+                    @include('partials.theme-toggle')
+
                     <a href="{{ route($roleHome) }}" class="text-ink-muted hover:text-accent transition-colors duration-200">
                         Back to Dashboard
                     </a>

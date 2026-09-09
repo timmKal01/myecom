@@ -2,6 +2,40 @@
 @tailwind components;
 @tailwind utilities;
 
+/* One shared color system for the whole site. Values are "R G B" triples
+   (no rgb() wrapper) so Tailwind's <alpha-value> can splice in opacity for
+   things like bg-accent/10. Toggling the `dark` class on <html> swaps the
+   whole palette — see resources/js/theme.js for the toggle itself. */
+:root {
+    --color-canvas: 245 246 250;
+    --color-surface: 255 255 255;
+    --color-line: 229 231 235;
+    --color-ink: 17 24 39;
+    --color-ink-muted: 107 114 128;
+    --color-accent: 59 91 255;
+    --color-accent-dark: 39 67 204;
+    --color-accent-soft: 238 241 255;
+    --color-positive: 22 163 74;
+    --color-positive-soft: 234 250 240;
+    --color-negative: 220 38 38;
+    --color-negative-soft: 253 236 236;
+}
+
+.dark {
+    --color-canvas: 12 14 20;
+    --color-surface: 21 24 33;
+    --color-line: 42 47 61;
+    --color-ink: 231 233 238;
+    --color-ink-muted: 148 156 173;
+    --color-accent: 99 128 255;
+    --color-accent-dark: 138 161 255;
+    --color-accent-soft: 30 36 61;
+    --color-positive: 52 211 153;
+    --color-positive-soft: 14 41 33;
+    --color-negative: 248 113 113;
+    --color-negative-soft: 55 22 26;
+}
+
 [x-cloak] {
     display: none !important;
 }
@@ -25,7 +59,7 @@
     width: 16px;
     height: 16px;
     border-radius: 9999px;
-    background: #a16207;
+    background: #3b5bff;
     border: 2px solid #ffffff;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
     cursor: pointer;
@@ -35,7 +69,7 @@
     width: 16px;
     height: 16px;
     border-radius: 9999px;
-    background: #a16207;
+    background: #3b5bff;
     border: 2px solid #ffffff;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
     cursor: pointer;

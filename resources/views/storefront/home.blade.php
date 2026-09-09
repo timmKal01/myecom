@@ -24,8 +24,8 @@
                 </a>
             </div>
         </div>
-        <div class="relative aspect-[4/3] rounded-2xl overflow-hidden border border-line bg-gradient-to-br from-[#EFDFE0] to-[#D9B8BC] flex items-center justify-center">
-            <p class="font-display italic text-2xl text-[#5A3A3E]/70 px-10 text-center">
+        <div class="relative aspect-[4/3] rounded-2xl overflow-hidden border border-line bg-gradient-to-br from-accent-soft to-accent/20 flex items-center justify-center">
+            <p class="font-display italic text-2xl text-accent-dark/80 px-10 text-center">
                 &ldquo;Northgate &amp; Co. — considered goods, chosen well.&rdquo;
             </p>
         </div>

@@ -26,6 +26,7 @@
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600,700&display=swap" rel="stylesheet" />
 
+    @include('partials.theme-init')
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="font-sans antialiased bg-admin-canvas text-admin-ink" x-data="{ sidebarOpen: false }">
@@ -148,7 +149,10 @@
         <div class="flex-1 min-w-0">
             <div class="hidden lg:flex items-center justify-between h-16 px-8 border-b border-admin-border bg-admin-surface sticky top-0 z-30">
                 <h1 class="text-xl font-semibold tracking-tight">{{ $title }}</h1>
-                <p class="text-sm text-admin-ink-muted">{{ now()->format('l, F j, Y') }}</p>
+                <div class="flex items-center gap-4">
+                    <p class="text-sm text-admin-ink-muted">{{ now()->format('l, F j, Y') }}</p>
+                    @include('partials.theme-toggle', ['class' => 'text-admin-ink-muted hover:text-admin-ink'])
+                </div>
             </div>
 
             @if (session('success'))
