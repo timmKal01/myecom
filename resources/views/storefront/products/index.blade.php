@@ -20,14 +20,14 @@
         <div class="flex items-center gap-2 overflow-x-auto pb-2 mb-8 -mx-1 px-1">
             <a
                 href="{{ route('storefront.products.index', request()->except(['category', 'page'])) }}"
-                class="shrink-0 text-sm font-medium px-4 py-2 rounded-full border transition-colors duration-200 {{ ! $activeCategory ? 'bg-ink text-white border-ink' : 'border-line text-ink hover:border-ink' }}"
+                class="shrink-0 text-sm font-medium px-4 py-2 rounded-full border transition-colors duration-200 {{ ! $activeCategory ? 'bg-ink-solid text-white border-ink-solid' : 'border-line text-ink hover:border-ink' }}"
             >
                 All Categories
             </a>
             @foreach ($categories as $category)
                 <a
                     href="{{ route('storefront.products.index', array_merge(request()->except(['category', 'page']), ['category' => $category->id])) }}"
-                    class="shrink-0 text-sm font-medium px-4 py-2 rounded-full border transition-colors duration-200 {{ $activeCategory && $activeCategory->id === $category->id ? 'bg-ink text-white border-ink' : 'border-line text-ink hover:border-ink' }}"
+                    class="shrink-0 text-sm font-medium px-4 py-2 rounded-full border transition-colors duration-200 {{ $activeCategory && $activeCategory->id === $category->id ? 'bg-ink-solid text-white border-ink-solid' : 'border-line text-ink hover:border-ink' }}"
                 >
                     {{ $category->category_name }}
                 </a>

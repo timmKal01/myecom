@@ -42,7 +42,7 @@
             </div>
         </div>
 
-        <a href="{{ route('storefront.products.index') }}" class="inline-flex items-center justify-center bg-ink text-white px-8 py-3.5 rounded-full font-medium hover:bg-accent transition-colors duration-300">
+        <a href="{{ route('storefront.products.index') }}" class="inline-flex items-center justify-center bg-ink-solid text-white px-8 py-3.5 rounded-full font-medium hover:bg-accent transition-colors duration-300">
             Continue shopping
         </a>
     </div>

@@ -16,7 +16,7 @@
 </head>
 <body class="font-sans antialiased bg-canvas text-ink" x-data="{ mobileMenuOpen: false }">
 
-    <div class="bg-ink text-white text-center text-xs py-2 px-4">
+    <div class="bg-ink-solid text-white text-center text-xs py-2 px-4">
         Free shipping on orders over $75 — arrives in 3–5 business days.
     </div>
 
@@ -130,7 +130,7 @@
         @yield('content')
     </main>
 
-    <footer class="bg-ink text-white/80 mt-24">
+    <footer class="bg-ink-solid text-white/80 mt-24">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
             <div class="lg:col-span-2">
                 <p class="font-display text-2xl text-white font-semibold tracking-wide mb-3">Northgate &amp; Co.</p>

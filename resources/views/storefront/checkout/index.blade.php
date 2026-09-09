@@ -81,7 +81,7 @@
 
                 <button
                     type="submit"
-                    class="w-full bg-ink text-white px-8 py-4 rounded-full font-medium hover:bg-accent transition-colors duration-300"
+                    class="w-full bg-ink-solid text-white px-8 py-4 rounded-full font-medium hover:bg-accent transition-colors duration-300"
                 >
                     Place Order
                 </button>

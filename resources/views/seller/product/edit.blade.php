@@ -99,7 +99,7 @@
                 <div>
                     <label for="images" class="block text-sm font-medium text-ink mb-1.5">Add New Images</label>
                     <input type="file" name="images[]" id="images" multiple
-                        class="w-full rounded-lg border border-line bg-surface px-3.5 py-2.5 text-sm file:mr-4 file:rounded-full file:border-0 file:bg-ink file:text-white file:text-xs file:font-medium file:px-4 file:py-2 focus:outline-none focus:ring-2 focus:ring-accent/40 focus:border-accent">
+                        class="w-full rounded-lg border border-line bg-surface px-3.5 py-2.5 text-sm file:mr-4 file:rounded-full file:border-0 file:bg-ink-solid file:text-white file:text-xs file:font-medium file:px-4 file:py-2 focus:outline-none focus:ring-2 focus:ring-accent/40 focus:border-accent">
                 </div>
 
                 <div>
@@ -109,7 +109,7 @@
                 </div>
 
                 <div class="flex items-center gap-3 pt-2">
-                    <button type="submit" class="inline-flex items-center justify-center rounded-full bg-ink text-white text-sm font-medium px-6 py-2.5 hover:bg-accent transition-colors duration-200">
+                    <button type="submit" class="inline-flex items-center justify-center rounded-full bg-ink-solid text-white text-sm font-medium px-6 py-2.5 hover:bg-accent transition-colors duration-200">
                         Update Product
                     </button>
                     <a href="{{ route('vendor.product.manage') }}" class="text-sm font-medium text-ink-muted hover:text-accent transition-colors duration-200">

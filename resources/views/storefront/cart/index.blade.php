@@ -16,7 +16,7 @@
             <div class="text-center py-24 border border-dashed border-line rounded-xl">
                 <p class="font-display text-2xl mb-2">Your cart is empty</p>
                 <p class="text-ink-muted mb-6">Find something you'll actually use.</p>
-                <a href="{{ route('storefront.products.index') }}" class="inline-flex items-center justify-center bg-ink text-white px-8 py-3.5 rounded-full font-medium hover:bg-accent transition-colors duration-300">
+                <a href="{{ route('storefront.products.index') }}" class="inline-flex items-center justify-center bg-ink-solid text-white px-8 py-3.5 rounded-full font-medium hover:bg-accent transition-colors duration-300">
                     Continue shopping
                 </a>
             </div>
@@ -78,7 +78,7 @@
                         <span class="text-ink">${{ number_format($subtotal, 2) }}</span>
                     </div>
                     <p class="text-xs text-ink-muted mb-4">Shipping and taxes calculated at checkout.</p>
-                    <a href="{{ route('storefront.checkout.index') }}" class="w-full inline-flex items-center justify-center bg-ink text-white px-8 py-3.5 rounded-full font-medium hover:bg-accent transition-colors duration-300">
+                    <a href="{{ route('storefront.checkout.index') }}" class="w-full inline-flex items-center justify-center bg-ink-solid text-white px-8 py-3.5 rounded-full font-medium hover:bg-accent transition-colors duration-300">
                         Checkout
                     </a>
                     <a href="{{ route('storefront.products.index') }}" class="w-full inline-flex items-center justify-center mt-3 text-sm text-ink-muted hover:text-ink transition-colors duration-200">

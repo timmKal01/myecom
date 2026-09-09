@@ -78,7 +78,7 @@
                         </select>
                         <button
                             type="submit"
-                            class="flex-1 bg-ink text-white px-8 py-3.5 rounded-full font-medium hover:bg-accent transition-colors duration-300"
+                            class="flex-1 bg-ink-solid text-white px-8 py-3.5 rounded-full font-medium hover:bg-accent transition-colors duration-300"
                         >
                             Add to Cart
                         </button>

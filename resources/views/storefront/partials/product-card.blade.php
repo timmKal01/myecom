@@ -36,13 +36,13 @@
                     -{{ $product->discount_percent }}%
                 </span>
             @elseif ($isNew)
-                <span class="absolute top-3 left-3 bg-ink text-white text-[11px] font-semibold px-2.5 py-1 rounded-full">
+                <span class="absolute top-3 left-3 bg-ink-solid text-white text-[11px] font-semibold px-2.5 py-1 rounded-full">
                     New
                 </span>
             @endif
 
             @if ($product->stock_status !== 'In Stock')
-                <span class="absolute bottom-3 right-3 bg-ink/80 text-white text-[11px] font-semibold px-2.5 py-1 rounded-full">
+                <span class="absolute bottom-3 right-3 bg-ink-solid/80 text-white text-[11px] font-semibold px-2.5 py-1 rounded-full">
                     {{ $product->stock_status }}
                 </span>
             @endif

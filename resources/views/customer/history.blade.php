@@ -7,7 +7,7 @@
         @if ($orders->isEmpty())
             <div class="text-center py-12">
                 <p class="text-sm text-ink-muted mb-4">You haven't placed an order yet.</p>
-                <a href="{{ route('storefront.products.index') }}" class="inline-flex items-center justify-center rounded-full bg-ink text-white text-sm font-medium px-6 py-2.5 hover:bg-accent transition-colors duration-200">
+                <a href="{{ route('storefront.products.index') }}" class="inline-flex items-center justify-center rounded-full bg-ink-solid text-white text-sm font-medium px-6 py-2.5 hover:bg-accent transition-colors duration-200">
                     Start Shopping
                 </a>
             </div>

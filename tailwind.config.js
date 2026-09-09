@@ -32,6 +32,12 @@ export default {
                 line: 'rgb(var(--color-line) / <alpha-value>)',
                 ink: 'rgb(var(--color-ink) / <alpha-value>)',
                 'ink-muted': 'rgb(var(--color-ink-muted) / <alpha-value>)',
+                // A fixed near-black, independent of the light/dark toggle —
+                // for elements meant to stay a solid dark chip with white
+                // text in both modes (buttons, badges, the footer band).
+                // `ink` itself is a *text* color and inverts in dark mode,
+                // so it isn't safe to reuse as a background for those.
+                'ink-solid': '#111827',
                 accent: 'rgb(var(--color-accent) / <alpha-value>)',
                 'accent-dark': 'rgb(var(--color-accent-dark) / <alpha-value>)',
                 'accent-soft': 'rgb(var(--color-accent-soft) / <alpha-value>)',

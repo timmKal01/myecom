@@ -16,7 +16,7 @@
                 </svg>
                 <p class="font-display text-2xl mb-2">Nothing saved yet</p>
                 <p class="text-ink-muted mb-6">Tap the heart on any product to save it here.</p>
-                <a href="{{ route('storefront.products.index') }}" class="inline-flex items-center justify-center bg-ink text-white px-8 py-3.5 rounded-full font-medium hover:bg-accent transition-colors duration-300">
+                <a href="{{ route('storefront.products.index') }}" class="inline-flex items-center justify-center bg-ink-solid text-white px-8 py-3.5 rounded-full font-medium hover:bg-accent transition-colors duration-300">
                     Browse products
                 </a>
             </div>
