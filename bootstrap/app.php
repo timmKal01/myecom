@@ -14,6 +14,11 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function (Middleware $middleware): void {
         $middleware->alias(['rolemanager' => RoleManager::class
     ]);
+        // Apple posts its Sign In callback cross-site (form_post response mode),
+        // so it can't carry our CSRF token.
+        $middleware->validateCsrfTokens(except: [
+            'auth/apple/callback',
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //
