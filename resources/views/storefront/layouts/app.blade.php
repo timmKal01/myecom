@@ -161,7 +161,7 @@
             </div>
         </div>
         <div class="border-t border-white/10 py-6 text-center text-xs text-white/40">
-            &copy; {{ date('Y') }} Northgate &amp; Co. All rights reserved.
+            &copy; {{ date('Y') }} Timothy Kalungu. All rights reserved.
         </div>
     </footer>
 
