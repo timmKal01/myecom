@@ -1,33 +1,34 @@
 <x-guest-layout>
     <div class="auth-enter auth-enter-2">
-        <h1 class="font-display text-3xl font-bold text-white mb-2">Welcome Back!</h1>
-        <p class="text-sm text-white/50 mb-8">Sign in to continue to Northgate &amp; Co.</p>
+        <h1 class="font-display text-4xl font-bold mb-8 bg-gradient-to-r from-[#14b8a6] to-[#2563eb] bg-clip-text text-transparent">
+            Log in
+        </h1>
     </div>
 
     <x-auth-session-status class="mb-4 auth-enter auth-enter-2" :status="session('status')" />
 
-    <form method="POST" action="{{ route('login') }}" class="space-y-4 auth-enter auth-enter-3">
+    <form method="POST" action="{{ route('login') }}" class="space-y-5 auth-enter auth-enter-3">
         @csrf
 
         <div>
-            <label for="email" class="block text-xs font-medium text-white/60 mb-1.5 uppercase tracking-wide">Email Address</label>
+            <label for="email" class="block text-sm font-semibold text-[#1a2332] mb-1.5">Email address</label>
             <input
                 id="email" type="email" name="email" value="{{ old('email') }}"
-                required autofocus autocomplete="username" placeholder="you@example.com"
-                class="w-full rounded-full bg-white/5 border border-white/10 py-3 px-5 text-sm text-white placeholder-white/25 focus:outline-none focus:ring-2 focus:ring-[#F0479E]/50 focus:border-[#F0479E]/50 transition-colors duration-200"
+                required autofocus autocomplete="username" placeholder="abc@xyz.com"
+                class="w-full border border-[#dbe4e2] rounded-lg py-2.5 px-4 text-sm text-[#1a2332] placeholder-[#9aa5a3] focus:outline-none focus:ring-2 focus:ring-[#14b8a6]/30 focus:border-[#14b8a6] transition-colors duration-200"
             >
-            @error('email') <p class="text-xs text-red-400 mt-1.5 px-1">{{ $message }}</p> @enderror
+            @error('email') <p class="text-xs text-red-600 mt-1.5">{{ $message }}</p> @enderror
         </div>
 
-        <div x-data="{ show: false }">
-            <label for="password" class="block text-xs font-medium text-white/60 mb-1.5 uppercase tracking-wide">Password</label>
-            <div class="relative">
+        <div>
+            <label for="password" class="block text-sm font-semibold text-[#1a2332] mb-1.5">Password</label>
+            <div class="relative" x-data="{ show: false }">
                 <input
                     id="password" :type="show ? 'text' : 'password'" name="password"
-                    required autocomplete="current-password" placeholder="••••••••"
-                    class="w-full rounded-full bg-white/5 border border-white/10 py-3 pl-5 pr-12 text-sm text-white placeholder-white/25 focus:outline-none focus:ring-2 focus:ring-[#F0479E]/50 focus:border-[#F0479E]/50 transition-colors duration-200"
+                    required autocomplete="current-password" placeholder="••••••••••"
+                    class="w-full border border-[#dbe4e2] rounded-lg py-2.5 px-4 pr-11 text-sm text-[#1a2332] placeholder-[#9aa5a3] focus:outline-none focus:ring-2 focus:ring-[#14b8a6]/30 focus:border-[#14b8a6] transition-colors duration-200"
                 >
-                <button type="button" @click="show = !show" class="absolute right-4 top-1/2 -translate-y-1/2 text-white/35 hover:text-white/70 transition-colors duration-200" aria-label="Toggle password visibility">
+                <button type="button" @click="show = !show" class="absolute right-3.5 top-1/2 -translate-y-1/2 text-[#9aa5a3] hover:text-[#1a2332] transition-colors duration-200" aria-label="Toggle password visibility">
                     <svg x-show="!show" xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z"/>
                         <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
@@ -37,43 +38,38 @@
                     </svg>
                 </button>
             </div>
-            @error('password') <p class="text-xs text-red-400 mt-1.5 px-1">{{ $message }}</p> @enderror
+            @error('password') <p class="text-xs text-red-600 mt-1.5">{{ $message }}</p> @enderror
         </div>
 
-        <div class="flex items-center justify-between text-sm pt-1">
-            <label for="remember_me" class="flex items-center gap-2 cursor-pointer select-none text-white/50">
-                <input id="remember_me" type="checkbox" name="remember" class="rounded border-white/20 bg-white/5 text-[#F0479E] focus:ring-[#F0479E]/50">
-                Remember me
+        <div class="flex items-center justify-between text-sm">
+            <label for="remember_me" class="flex items-center gap-2 cursor-pointer select-none">
+                <input id="remember_me" type="checkbox" name="remember" class="rounded border-[#dbe4e2] text-[#14b8a6] focus:ring-[#14b8a6]/30">
+                <span class="font-medium text-[#1a2332]">Remember me</span>
             </label>
             @if (Route::has('password.request'))
-                <a href="{{ route('password.request') }}" class="text-white/50 hover:text-white transition-colors duration-200">
-                    Forgot Password?
+                <a href="{{ route('password.request') }}" class="font-medium text-[#1a2332] hover:text-[#0f766e] transition-colors duration-200">
+                    Forgot Password ?
                 </a>
             @endif
         </div>
 
         <button
             type="submit"
-            class="w-full rounded-full bg-gradient-to-r from-[#FF7A45] via-[#F0479E] to-[#8B5CF6] text-white font-semibold py-3.5 mt-2 hover:opacity-90 hover:-translate-y-0.5 transition-all duration-200 shadow-lg shadow-[#F0479E]/20"
+            class="w-full rounded-full bg-gradient-to-r from-[#14b8a6] to-[#2563eb] text-white font-semibold py-3 hover:opacity-90 hover:-translate-y-0.5 transition-all duration-200 shadow-lg shadow-[#14b8a6]/20"
         >
-            Log In
+            Log in
         </button>
     </form>
 
-    <div class="flex items-center gap-3 my-6 auth-enter auth-enter-3">
-        <div class="flex-1 h-px bg-white/10"></div>
-        <span class="text-xs text-white/30 uppercase tracking-wider">Or</span>
-        <div class="flex-1 h-px bg-white/10"></div>
-    </div>
-
     <div class="auth-enter auth-enter-4">
+        <p class="text-center text-sm font-medium text-[#1a2332] mt-8 mb-4">Or connect with</p>
         @include('auth.partials.social-buttons')
-    </div>
 
-    <p class="text-sm text-white/50 text-center mt-8 auth-enter auth-enter-4">
-        Don't have an account?
-        <a href="{{ route('register') }}" class="text-white font-medium hover:text-[#F0479E] transition-colors duration-200">
-            Sign Up
-        </a>
-    </p>
+        <p class="text-sm text-center text-[#5b6866] mt-8">
+            Don't have an account ?
+            <a href="{{ route('register') }}" class="font-semibold text-[#1a2332] hover:text-[#0f766e] transition-colors duration-200">
+                Sign up
+            </a>
+        </p>
+    </div>
 </x-guest-layout>
