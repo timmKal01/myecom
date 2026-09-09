@@ -47,7 +47,7 @@
         <div
             x-show="sidebarOpen"
             x-cloak
-            class="fixed inset-0 z-40 bg-admin-ink/40 lg:hidden"
+            class="fixed inset-0 z-40 bg-ink-solid/40 lg:hidden"
             @click="sidebarOpen = false"
             x-transition:enter="transition-opacity ease-out duration-200"
             x-transition:enter-start="opacity-0"
