@@ -57,7 +57,7 @@ class SellerProductController extends Controller
             'store_id' => $request->input('store_id'),
             'regular_price' => $request->input('regular_price'),
             'discounted_price' => $request->input('discounted_price'),
-            'tax_rate' => $request->input('tax_rate'),
+            'tax_rate' => $request->filled('tax_rate') ? $request->input('tax_rate') : 0,
             'stock_quantity' => $request->input('stock_quantity'),
             'slug' => $request->input('slug'),
             'meta_title' => $request->input('meta_title'),
